@@ -26,6 +26,7 @@ Semua edit dibuat pada source, push ke `main`, Actions deploy sendiri (1 hingga 
 - Template Prospect: `apps/prospect/src/App.jsx`, blok template di bahagian atas fail.
 - Customer Registration (tukar borang ke format pendaftaran): `apps/registration/src/App.jsx`. Seksyen yang sama masih ada dalam `apps/prospect` (sengaja dikekalkan).
 - Kad landing: array `TOOLS` dalam `index.html` (title, desc, tags, url relatif, color, icon).
+- Kotak Pautan (Tutorial, simpanemasfizikal.com, taufik.fyi, live, storyboard): blok `<section class="links">` dalam `index.html`.
 - Butang `← HOME` ada dalam `src/main.jsx` kedua-dua app.
 
 ## Tambah tool baru

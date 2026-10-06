@@ -42,7 +42,14 @@ h2{font-family:'Archivo Black',sans-serif;font-size:1.6rem;text-transform:upperc
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tags span{border:2px solid var(--ink);padding:3px 8px;font-size:.72rem;font-weight:700;text-transform:uppercase;background:var(--bg)}
 .go{margin-top:auto;align-self:flex-start;background:var(--c);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:10px 18px;font-weight:700;text-transform:uppercase;font-size:.9rem}
-footer{margin-top:44px;text-align:center;font-size:.72rem;line-height:1.7;max-width:640px;margin-inline:auto}
+
+.links{margin-top:32px;background:#fff;border:3px solid var(--ink);box-shadow:var(--shadow);padding:18px 20px}
+.links h3{font-family:'Archivo Black',sans-serif;font-size:1rem;text-transform:uppercase;margin-bottom:12px}
+.links ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.links a{display:inline-block;color:var(--ink);text-decoration:none;font-weight:700;font-size:.8rem;text-transform:uppercase;border:2px solid var(--ink);background:var(--bg);padding:7px 12px;box-shadow:3px 3px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.links a:hover,.links a:focus-visible{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);background:var(--yellow);outline:none}
+.links a.main{background:var(--yellow)}
+footer{margin-top:28px;text-align:center;font-size:.72rem;line-height:1.7;max-width:640px;margin-inline:auto}
 @media (max-width:640px){
   body{padding:20px 14px 16px}
   header{margin-bottom:20px}
@@ -59,7 +66,11 @@ footer{margin-top:44px;text-align:center;font-size:.72rem;line-height:1.7;max-wi
   .desc{font-size:.78rem;line-height:1.45}
   .tags span{font-size:.62rem;padding:2px 6px}
   .go{padding:7px 14px;font-size:.8rem;box-shadow:3px 3px 0 var(--ink)}
-  footer{margin-top:20px;font-size:.62rem;line-height:1.5}
+  .links{margin-top:16px;padding:12px;box-shadow:4px 4px 0 var(--ink)}
+  .links h3{font-size:.85rem;margin-bottom:8px}
+  .links ul{gap:7px}
+  .links a{font-size:.68rem;padding:5px 8px;box-shadow:2px 2px 0 var(--ink)}
+  footer{margin-top:16px;font-size:.62rem;line-height:1.5}
 }
 @media (prefers-reduced-motion:reduce){.card{transition:none}}
 </style>
@@ -72,6 +83,17 @@ footer{margin-top:44px;text-align:center;font-size:.72rem;line-height:1.7;max-wi
   </header>
 
   <section class="grid" id="tools" aria-label="Senarai tool"></section>
+
+  <section class="links" aria-label="Pautan lain">
+    <h3>Pautan</h3>
+    <ul>
+      <li><a class="main" href="https://pg2u.my/taufikmusa/tutorial" target="_blank" rel="noopener">Tutorial Public Gold</a></li>
+      <li><a href="https://simpanemasfizikal.com/" target="_blank" rel="noopener">Simpan Emas Fizikal</a></li>
+      <li><a href="https://taufik.fyi/" target="_blank" rel="noopener">Taufik.fyi</a></li>
+      <li><a href="https://live.taufik.fyi/" target="_blank" rel="noopener">Live</a></li>
+      <li><a href="https://taufikmusa.github.io/storyboard-video/" target="_blank" rel="noopener">Storyboard Video</a></li>
+    </ul>
+  </section>
 
   <footer>
     Penafian : Laman ini dimiliki oleh Taufik, PGCode = PG00359605 (Dealer Public Gold), dan bukan laman rasmi Public Gold Marketing Sdn. Bhd.
