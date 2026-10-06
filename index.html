@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PG Tool | Toolset Dealer Public Gold</title>
+<meta name="description" content="Toolset peribadi dealer Public Gold: template mesej prospek dan pusat follow-up.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F0E6; --ink:#000; --card:#fff;
+  --yellow:#FFD600; --cyan:#5CE1E6; --green:#25D366; --amber:#FFDD57;
+  --shadow:6px 6px 0 var(--ink);
+}
+*{box-sizing:border-box;margin:0}
+body{
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:500;color:var(--ink);
+  background:var(--bg);
+  background-image:radial-gradient(#00000033 1.2px,transparent 1.2px);
+  background-size:28px 28px;
+  min-height:100vh;padding:48px 16px 32px;
+}
+main{max-width:920px;margin:0 auto}
+header{text-align:center;margin-bottom:40px}
+h1{font-family:'Archivo Black',sans-serif;font-size:clamp(2.4rem,9vw,4.4rem);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+.badge{display:inline-block;margin-top:18px;background:#fff;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:8px 14px;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em}
+.grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))}
+.card{
+  display:flex;flex-direction:column;gap:14px;background:var(--card);color:inherit;text-decoration:none;
+  border:3px solid var(--ink);box-shadow:var(--shadow);padding:28px;
+  transition:transform .12s,box-shadow .12s;
+}
+.card:hover,.card:focus-visible{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink);outline:none}
+.card:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--ink)}
+.icon{width:64px;height:64px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:grid;place-items:center;background:var(--c)}
+.icon svg{width:30px;height:30px;stroke:var(--ink);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+h2{font-family:'Archivo Black',sans-serif;font-size:1.6rem;text-transform:uppercase;line-height:1.05}
+.desc{font-size:.92rem;line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{border:2px solid var(--ink);padding:3px 8px;font-size:.72rem;font-weight:700;text-transform:uppercase;background:var(--bg)}
+.go{margin-top:auto;align-self:flex-start;background:var(--c);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:10px 18px;font-weight:700;text-transform:uppercase;font-size:.9rem}
+.soon{border-style:dashed;box-shadow:none;background:transparent;align-items:center;justify-content:center;text-align:center;min-height:200px;color:#000a}
+.soon:hover{transform:none;box-shadow:none}
+footer{margin-top:44px;text-align:center;font-size:.72rem;line-height:1.7;max-width:640px;margin-inline:auto}
+@media (prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>PG Tool</h1>
+    <div class="badge">Public Gold Dealer Toolset</div>
+  </header>
+
+  <section class="grid" id="tools" aria-label="Senarai tool"></section>
+
+  <footer>
+    Penafian : Laman ini dimiliki oleh Taufik, PGCode = PG00359605 (Dealer Public Gold), dan bukan laman rasmi Public Gold Marketing Sdn. Bhd.
+  </footer>
+</main>
+
+<script>
+// Tambah tool baru di sini sahaja. Bila folder tool dah ada dalam repo,
+// tukar url kepada laluan relatif, contoh "prospect/".
+const TOOLS = [
+  {
+    title: "Prospect Script",
+    desc: "Urus template WhatsApp untuk prospek. Isi nama dan nombor, edit mesej, terus hantar atau salin.",
+    tags: ["WhatsApp", "Template", "Prospek"],
+    url: "https://pgprospect-registration-dashboard.netlify.app/",
+    color: "var(--yellow)",
+    icon: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>'
+  },
+  {
+    title: "Follow-up Center",
+    desc: "Muat naik database (CSV, TSV, XLSX), broadcast, tapis ikut status dan susun senarai follow-up.",
+    tags: ["Broadcast", "Status", "Sort"],
+    url: "https://pgfollowup-dashboard02.netlify.app/",
+    color: "var(--cyan)",
+    icon: '<path d="M4 17l6-6-6-6M12 19h8"/>'
+  }
+];
+
+const root = document.getElementById('tools');
+TOOLS.forEach(t => {
+  const a = document.createElement('a');
+  a.className = 'card';
+  a.href = t.url;
+  a.style.setProperty('--c', t.color);
+  a.innerHTML =
+    '<div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true">' + t.icon + '</svg></div>' +
+    '<h2></h2><p class="desc"></p><div class="tags"></div><span class="go">Buka &rarr;</span>';
+  a.querySelector('h2').textContent = t.title;
+  a.querySelector('.desc').textContent = t.desc;
+  t.tags.forEach(x => { const s = document.createElement('span'); s.textContent = x; a.querySelector('.tags').appendChild(s); });
+  root.appendChild(a);
+});
+const soon = document.createElement('div');
+soon.className = 'card soon';
+soon.innerHTML = '<h2>Tool seterusnya</h2><p class="desc">Akan datang.</p>';
+root.appendChild(soon);
+</script>
+</body>
+</html>
