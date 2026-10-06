@@ -42,9 +42,22 @@ h2{font-family:'Archivo Black',sans-serif;font-size:1.6rem;text-transform:upperc
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tags span{border:2px solid var(--ink);padding:3px 8px;font-size:.72rem;font-weight:700;text-transform:uppercase;background:var(--bg)}
 .go{margin-top:auto;align-self:flex-start;background:var(--c);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:10px 18px;font-weight:700;text-transform:uppercase;font-size:.9rem}
-.soon{border-style:dashed;box-shadow:none;background:transparent;align-items:center;justify-content:center;text-align:center;min-height:200px;color:#000a}
-.soon:hover{transform:none;box-shadow:none}
 footer{margin-top:44px;text-align:center;font-size:.72rem;line-height:1.7;max-width:640px;margin-inline:auto}
+@media (max-width:640px){
+  body{padding:20px 14px 16px}
+  header{margin-bottom:20px}
+  h1{font-size:2.3rem}
+  .badge{margin-top:10px;padding:6px 10px;font-size:.7rem;box-shadow:3px 3px 0 var(--ink)}
+  .grid{gap:16px}
+  .card{padding:16px;gap:8px;box-shadow:4px 4px 0 var(--ink)}
+  .icon{width:42px;height:42px;box-shadow:3px 3px 0 var(--ink)}
+  .icon svg{width:22px;height:22px}
+  h2{font-size:1.2rem}
+  .desc{font-size:.78rem;line-height:1.45}
+  .tags span{font-size:.62rem;padding:2px 6px}
+  .go{padding:7px 14px;font-size:.8rem;box-shadow:3px 3px 0 var(--ink)}
+  footer{margin-top:20px;font-size:.62rem;line-height:1.5}
+}
 @media (prefers-reduced-motion:reduce){.card{transition:none}}
 </style>
 </head>
@@ -98,10 +111,6 @@ TOOLS.forEach(t => {
   t.tags.forEach(x => { const s = document.createElement('span'); s.textContent = x; a.querySelector('.tags').appendChild(s); });
   root.appendChild(a);
 });
-const soon = document.createElement('div');
-soon.className = 'card soon';
-soon.innerHTML = '<h2>Tool seterusnya</h2><p class="desc">Akan datang.</p>';
-root.appendChild(soon);
 </script>
 </body>
 </html>
