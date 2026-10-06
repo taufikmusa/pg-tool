@@ -32,12 +32,18 @@ jobs:
         run: |
           npm ci --no-audit --no-fund
           npm run build
+      - name: Build registration app
+        working-directory: apps/registration
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
       - name: Assemble site
         run: |
           mkdir _site
           cp index.html CNAME .nojekyll _site/
           cp -r apps/followup/dist _site/followup
           cp -r apps/prospect/dist _site/prospect
+          cp -r apps/registration/dist _site/registration
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
