@@ -87,18 +87,31 @@ function buildMsg(c,tpl){return tpl.replace(/\[NAME\]/gi,getShortName(c.name)).r
 function initials(n){const w=(n||"").trim().split(" ");return(w[0]?.[0]||"")+(w[1]?.[0]||"");}
 function avatarColor(n){const cols=["#FF5757","#FF914D","#FFDE59","#7ED957","#5CE1E6","#CB6CE6","#FF66C4"];let h=0;for(const c of(n||""))h=(h*31+c.charCodeAt(0))%cols.length;return cols[h];}
 
+function parseRows(text,sep){
+  const rows=[];let row=[],f="",q=false;
+  for(let i=0;i<text.length;i++){
+    const ch=text[i];
+    if(q){if(ch==='"'){if(text[i+1]==='"'){f+='"';i++;}else q=false;}else f+=ch;}
+    else if(ch==='"'&&f==="")q=true;
+    else if(ch===sep){row.push(f);f="";}
+    else if(ch==="\n"||ch==="\r"){if(ch==="\r"&&text[i+1]==="\n")i++;row.push(f);f="";if(row.some(x=>x!==""))rows.push(row);row=[];}
+    else f+=ch;
+  }
+  row.push(f);if(row.some(x=>x!==""))rows.push(row);
+  return rows;
+}
 function parseCSV(text){
-  const lines=text.trim().split(/\r?\n/);if(lines.length<2)return[];
-  const sep=lines[0].includes("\t")?"\t":",";
-  const hdrs=lines[0].split(sep).map(h=>h.trim().toLowerCase().replace(/[^a-z0-9]/g,"_"));
+  const t=text.trim();const sep=t.split(/\r?\n/,1)[0].includes("\t")?"\t":",";
+  const rows=parseRows(t,sep);if(rows.length<2)return[];
+  const hdrs=rows[0].map(h=>h.trim().toLowerCase().replace(/[^a-z0-9]/g,"_"));
   const find=(...ks)=>{for(const k of ks){const i=hdrs.findIndex(h=>h.includes(k));if(i!==-1)return i;}return -1;};
   const iN=find("name"),iPG=find("pgcode","pg_code","code","id"),iEm=find("email"),iV=find("verified","profile_verified");
   const iD=find("dob","d_o_b_","birth","date_of_birth"),iRk=find("rank","tier","level"),iBr=find("branch","region","area","location");
   const iT=find("telephone","phone","tel","mobile","contact"),iFr=find("frontline","total_frontline");
   const iEmp=find("empire","empire_size","team_size"),iRg=find("date_register","register","joined","reg_date");
   const iLP=find("last_purchase","last_purchase_date","last_buy"),iAu=find("autodebit","auto_debit","auto"),iAm=find("amount","amt","price");
-  return lines.slice(1).map(line=>{
-    const c=line.split(sep);const g=i=>i>=0?(c[i]||"").trim():"—";
+  return rows.slice(1).map(c=>{
+    const g=i=>i>=0?(c[i]||"").trim():"—";
     const pg=g(iPG);const age=calcAge(g(iD));const lpd=g(iLP);const cat=getCategory(lpd);
     let tel=g(iT).replace(/\D/g,"");if(tel.startsWith("01"))tel="6"+tel;
     let regYear="Unknown";const rr=g(iRg);
