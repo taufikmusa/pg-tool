@@ -24,7 +24,7 @@ const FOLLOWUP = [
   { key:"converted", label:"Converted!", color:"#7ED957", text:"#000" },
 ];
 
-const DEFAULT_TEMPLATE = `Salam [GREET] [NAME]. 
+const OLD_TEMPLATE = `Salam [GREET] [NAME]. 
 Maaf lama tak followup.
 Tadi masa semak rekod Public Gold (PG),
 Saya nampak [GREET] [NAME] dah daftar akaun PG sejak tahun [YEAR]. 
@@ -39,7 +39,28 @@ Kalau lupa username atau password, Boleh reply whatsapp ya. Saya terus guide car
 Taufik (PG Dealer)
 https://pg2u.my/taufikmusa`;
 
+const PINNED_TEMPLATE = `Salam
+
+Apa khabar [GREET] [NAME]? Lama saya tak update tentang simpanan emas.
+
+Sekadar nak berkongsi, harga emas GAP Public Gold hari ini (31 Oktober 2026) turun kepada RM551 segram.
+
+Kalau sebelum ni [GREET] [NAME] pernah menyimpan emas tetapi dah lama berhenti, mungkin ini masa yang sesuai untuk mula aktifkan semula simpanan.
+
+Tak perlu terus simpan banyak. Dengan RM100 pun dah boleh mula kumpul sekitar 0.1815 gram emas.
+
+Yang penting, kita mulakan semula. Sedikit demi sedikit, lama-lama jadi bukit.
+
+Kalau [GREET] [NAME] nak sambung menabung semula, boleh reply mesej ini. Saya sedia bantu.
+
+Kalau belum ada rezeki sekarang, tak mengapa. 
+
+Taufik | Dealer Public Gold`;
+const DEFAULT_TEMPLATE = PINNED_TEMPLATE;
+
 const QUICK_TEMPLATES = [
+  { title:"Harga Turun RM551 (31 Okt)", pinned:true, content:PINNED_TEMPLATE },
+  { title:"Follow Up Lama (RM634)", content:OLD_TEMPLATE },
   { title:"Update Password", content:`[GREET] [NAME] boleh update password ikut step dekat sini\nhttps://pg2u.my/taufikmusa/update-password\nBoleh update di website Public Gold\nhttps://publicgold.com.my/index.php?route=account/login\n*Klik Forgot Password di website untuk reset kalau terlupa password asal` },
   { title:"Download Apps", content:`[GREET] [NAME] boleh download Apps Public Gold dekat sini\nAndroid 📱\nhttps://play.google.com/store/apps/details?id=com.pgmapp.publicgold\niOS 🍎\nhttps://apps.apple.com/my/app/public-gold/id1591580964` },
   { title:"Kenapa Simpan Emas", content:`Salam [GREET] [NAME],\nSekadar berkongsi artikel dari mentor saya, Tuan Mohd Zulkifli Shafie\ntentang sebab utama kenapa simpan emas\nMoga bermanfaat\nhttps://www.mohdzulkifli.com/2023/08/inilah-sebab-utama-kenapa-saya-simpan-emas.html` },
@@ -438,7 +459,7 @@ function Dashboard({data,onReset}){
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {QUICK_TEMPLATES.map((t,i)=>(
             <div key={i} className={`flex flex-col bg-white border-2 border-black ${RS}`}>
-              <div className="bg-black text-white px-3 py-2 font-black text-xs uppercase truncate">{t.title}</div>
+              <div className={`px-3 py-2 font-black text-xs uppercase truncate ${t.pinned?"bg-[#FFDE59] text-black border-b-2 border-black":"bg-black text-white"}`}>{t.pinned?"📌 PINNED · ":""}{t.title}</div>
               <div className="p-3 flex-1 flex flex-col">
                 <textarea readOnly value={t.content} className="w-full h-20 text-[10px] font-mono text-gray-700 bg-gray-50 p-2 border border-dashed border-gray-300 mb-3 resize-none focus:outline-none"/>
                 <div className="flex gap-2"><button onClick={()=>setMsgTpl(t.content)} className={`flex-1 bg-[#CB6CE6] text-black font-black py-1.5 text-[10px] uppercase ${RB} hover:-translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all`}>USE</button><CopyButton text={t.content}/></div>
