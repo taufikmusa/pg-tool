@@ -80,7 +80,8 @@ function getCategory(lpd) {
 function calcAge(dob){if(!dob||dob==="-")return null;const d=new Date(dob);if(isNaN(d))return null;return Math.floor((TODAY-d)/(365.25*86400000));}
 function getAgeGroup(a){if(a===null)return"Unknown";if(a<18)return"< 18 tahun";if(a<=29)return"18 - 29";if(a<=39)return"30 - 39";if(a<=49)return"40 - 49";if(a<=55)return"50 - 55";return"56+";}
 function getGreeting(n){if(!n)return"Cik";const u=n.toUpperCase();if(u.includes(" BIN ")||u.includes(" B. ")||/^(MOHD|MOHAMMAD|MUHAMMAD|MD)\s+/.test(u))return"En.";return"Cik";}
-function getShortName(n){if(!n)return"";let u=n.toUpperCase().trim();const mr=/^(MOHD\.?|MOHAMMAD|MUHAMMAD|MD\.?)\s+/;const hm=mr.test(u);if(hm)u=u.replace(mr,"");const m=u.match(/^(.*?)\s+(BIN|BINTI|B\.|BT\.|BTE|BT)\s+/);let raw=m?(hm?m[1].split(" ")[0]:m[1]):u.split(" ")[0];return raw.split(" ").map(w=>w[0].toUpperCase()+w.slice(1).toLowerCase()).join(" ");}
+const NAME_SKIP=new Set(["RAJA","TENGKU","TUNKU","TUAN","SYED","SYARIFAH","SHARIFAH","WAN","NIK","CHE","DATO","DATUK","DR","HAJI","HJ","HAJJAH","MOHD","MOHAMMAD","MOHAMAD","MUHAMMAD","MUHAMAD","MUHD","MD","MOHAMED","NUR","NURUL","NOR","NOOR","SITI","SRI"]);
+function getShortName(n){if(!n)return"";const u=n.toUpperCase().replace(/\./g," ").replace(/\s+/g," ").trim();const pre=u.split(/\s+(?:BIN|BINTI|BT|BTE|B|ANAK|A\/L|A\/P)\s+/)[0];const ws=pre.split(" ").filter(Boolean);const w=ws.find(x=>!NAME_SKIP.has(x))||ws[0]||"";return w?w[0]+w.slice(1).toLowerCase():"";}
 function getCustomerKey(c){return c.pgcode||`${c.name}_${c.telephone}`;}
 function buildMsg(c,tpl){return tpl.replace(/\[NAME\]/gi,getShortName(c.name)).replace(/\[GREET\]/gi,getGreeting(c.name)).replace(/\[YEAR\]/gi,c.regYear!=="Unknown"?c.regYear:"2021").replace(/\[PGCode\]/gi,c.pgcode||"");}
 function initials(n){const w=(n||"").trim().split(" ");return(w[0]?.[0]||"")+(w[1]?.[0]||"");}
