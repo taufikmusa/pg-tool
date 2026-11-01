@@ -43,11 +43,11 @@ const PINNED_TEMPLATE = `Salam
 
 Apa khabar [GREET] [NAME]? Lama saya tak update tentang simpanan emas.
 
-Sekadar nak berkongsi, harga emas GAP Public Gold hari ini (31 Oktober 2026) turun kepada RM551 segram.
+Sekadar nak berkongsi, harga emas GAP Public Gold hari ini (01 November 2026) turun kepada RM548 segram.
 
 Kalau sebelum ni [GREET] [NAME] pernah menyimpan emas tetapi dah lama berhenti, mungkin ini masa yang sesuai untuk mula aktifkan semula simpanan.
 
-Tak perlu terus simpan banyak. Dengan RM100 pun dah boleh mula kumpul sekitar 0.1815 gram emas.
+Tak perlu terus simpan banyak. Dengan RM100 pun dah boleh mula kumpul sekitar 0.1825 gram emas.
 
 Yang penting, kita mulakan semula. Sedikit demi sedikit, lama-lama jadi bukit.
 
@@ -59,7 +59,7 @@ Taufik | Dealer Public Gold`;
 const DEFAULT_TEMPLATE = PINNED_TEMPLATE;
 
 const QUICK_TEMPLATES = [
-  { title:"Harga Turun RM551 (31 Okt)", pinned:true, content:PINNED_TEMPLATE },
+  { title:"Harga Turun RM548 (1 Nov)", pinned:true, content:PINNED_TEMPLATE },
   { title:"Follow Up Lama (RM634)", content:OLD_TEMPLATE },
   { title:"Update Password", content:`[GREET] [NAME] boleh update password ikut step dekat sini\nhttps://pg2u.my/taufikmusa/update-password\nBoleh update di website Public Gold\nhttps://publicgold.com.my/index.php?route=account/login\n*Klik Forgot Password di website untuk reset kalau terlupa password asal` },
   { title:"Download Apps", content:`[GREET] [NAME] boleh download Apps Public Gold dekat sini\nAndroid 📱\nhttps://play.google.com/store/apps/details?id=com.pgmapp.publicgold\niOS 🍎\nhttps://apps.apple.com/my/app/public-gold/id1591580964` },
