@@ -252,7 +252,7 @@ function BroadcastPanel({list,idx,onSend,onSkip,onClose,msgTpl,attachedImage,fol
   );
 }
 
-function Modal({c,onClose,messageTemplate,followUpStatus,onSetFollowUp}){
+function Modal({c,onClose,messageTemplate,followUpStatus,onSetFollowUp,onStartBroadcast}){
   if(!c)return null;
   const av=avatarColor(c.name),cKey=getCustomerKey(c),curStatus=followUpStatus[cKey]||"pending";
   return(
@@ -292,6 +292,7 @@ function Modal({c,onClose,messageTemplate,followUpStatus,onSetFollowUp}){
           </div>
           {c.email&&c.email!=="—"&&<div className={`bg-white p-3 border-2 border-black ${RS} mb-4 break-all`}><span className="block text-[10px] font-black uppercase mb-1">EMAIL</span><span className="font-mono text-sm">{c.email}</span></div>}
           <WaBtn customer={c} big messageTemplate={messageTemplate}/>
+          {onStartBroadcast&&<button onClick={onStartBroadcast} className={`mt-3 w-full py-3 font-black uppercase text-sm bg-[#FF914D] text-black ${RB} shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] transition-all active:shadow-none active:translate-y-0 flex items-center justify-center gap-2`}><Radio size={16}/> MULA BROADCAST DARI SINI</button>}
         </div>
       </div>
     </div>
@@ -325,6 +326,7 @@ function Dashboard({data,onReset}){
     img.src=objUrl;
   };
 
+  const startBroadcastFrom=c=>{const i=sorted.findIndex(x=>getCustomerKey(x)===getCustomerKey(c));setSelected(null);setBroadcastIdx(i>=0?i:0);setBroadcastMode(true);};
   const handleBroadcastSend=async()=>{
     const c=sorted[broadcastIdx];if(!c)return;
     const cKey=getCustomerKey(c);
@@ -380,7 +382,7 @@ function Dashboard({data,onReset}){
   return(
     <div className="w-full max-w-7xl mx-auto">
       {broadcastMode&&<BroadcastPanel list={sorted} idx={broadcastIdx} onSend={handleBroadcastSend} onSkip={()=>setBroadcastIdx(i=>i+1)} onClose={()=>{setBroadcastMode(false);setBroadcastIdx(0);}} msgTpl={msgTpl} attachedImage={attachedImage} followUpStatus={followUpStatus} onSetFollowUp={setFollowUp}/>}
-      {selected&&<Modal c={selected} onClose={()=>setSelected(null)} messageTemplate={msgTpl} followUpStatus={followUpStatus} onSetFollowUp={setFollowUp}/>}
+      {selected&&<Modal c={selected} onClose={()=>setSelected(null)} messageTemplate={msgTpl} followUpStatus={followUpStatus} onSetFollowUp={setFollowUp} onStartBroadcast={()=>startBroadcastFrom(selected)}/>}
       {toast&&<div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-black text-white px-6 py-3 font-mono font-bold text-sm uppercase border-2 border-black shadow-[6px_6px_0px_rgba(203,108,230,1)] flex items-center gap-3"><CheckCircle2 size={18} className="text-[#7ED957]"/>{toast}</div>}
 
       {/* Header */}
