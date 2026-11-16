@@ -11,73 +11,323 @@ const RETRO_SHADOW_SM = "shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]";
 const RETRO_SHADOW_HOVER = "hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all";
 const RETRO_BORDER = "border-2 border-black";
 
-const TEMPLATES = [
+const WA_TEMPLATES = [
   {
-    id: 1,
-    title: "MESEJ 1: GREETING",
-    content: `Salam\n\nTerima kasih kerana menghubungi saya. \nSaya Taufik, Dealer Rasmi Public Gold.\n\nBoleh saya tahu nama dan berapa bajet \nyang ada untuk mulakan simpanan emas? \n(Boleh bermula serendah RM100)`
+    id: "wa-1",
+    title: "FASA 1: SAMBUT & KENALI",
+    content: `Assalamualaikum dan salam kenal!
+
+Terima kasih kerana menghubungi saya.
+
+Saya Taufik, Dealer Rasmi Public Gold.
+
+Insya-Allah, saya boleh bantu terangkan bagaimana simpanan emas berfungsi dan bagaimana kita boleh mula membina simpanan secara berperingkat.
+
+Boleh saya tahu nama Cik/Tuan?
+
+Dan satu lagi, adakah ini kali pertama Cik/Tuan nak mula menyimpan emas?`
   },
   {
-    id: 2,
-    title: "MESEJ 2: EXPLAIN GAP",
-    content: `Berdasarkan bajet [NAME], paling sesuai \nmulakan dengan Akaun Emas GAP.\n\nGold Accumulation Program (GAP) —\n✓ Mula dengan RM100 atau 1 gram\n✓ Beli & jual bila-bila masa\n✓ Tiada komitmen bulanan\n✓ Simpan dengan PG percuma, tiada had\n✓ Boleh keluarkan jadi gold bar atau \n  dinar bila-bila masa\n\nMudah, fleksibel, dan patuh syariah.`
+    id: "wa-2",
+    title: "FASA 2A: TUJUAN SIMPANAN",
+    content: `Baik, [NAME].
+
+Sebelum saya cadangkan cara yang sesuai, boleh saya tahu apa tujuan utama [NAME] nak mula menyimpan emas?
+
+Adakah untuk:
+
+- Simpanan jangka panjang?
+- Persediaan pendidikan anak?
+- Dana kecemasan?
+- Persediaan persaraan?
+- Atau sekadar nak mula membina aset?
+
+Saya tanya supaya saya boleh bantu cadangkan kaedah simpanan yang sesuai dengan kemampuan dan matlamat [NAME].`
   },
   {
-    id: 3,
-    title: "MESEJ 3: CONFIRM & REGISTER",
-    content: `[NAME] ada sebarang soalan tentang \nakaun GAP sebelum kita proceed?\n\nKalau dah clear, saya boleh bantu \ndaftarkan akaun sekarang.\n\nProses ambil dalam 5 minit je, \ndan pendaftaran percuma. 😊`
+    id: "wa-3",
+    title: "FASA 2B: BAJET (BILA PERLU)",
+    content: `Untuk permulaan, berapa bajet yang [NAME] selesa peruntukkan untuk simpanan emas?
+
+Tak perlu besar pun. Di Public Gold, kita boleh mula dengan serendah RM100 melalui akaun GAP.`
   },
   {
-    id: 4,
-    title: "MESEJ 4: INFO COLLECTION",
-    content: `Untuk saya daftarkan, boleh kongsikan \nmaklumat berikut:\n\n📋 Nama penuh (ikut IC):\n📧 Email:\n🪪 No. IC (12 digit):\n📱 No. telefon:\n\nMaklumat ini hanya digunakan untuk \npendaftaran akaun Public Gold sahaja.`
+    id: "wa-4",
+    title: "FASA 3: PERKENALKAN GAP",
+    content: `Berdasarkan apa yang [NAME] kongsikan tadi, saya cadangkan kita kenali dahulu satu kemudahan simpanan emas yang disediakan oleh Public Gold, iaitu Gold Accumulation Program (GAP).
+
+Apa yang menarik tentang GAP?
+
+1. Boleh mula menyimpan serendah RM100.
+2. Tak perlu beli gold bar secara fizikal untuk mula mengumpul emas.
+3. Boleh tambah simpanan mengikut kemampuan.
+4. Tiada komitmen bulanan.
+5. Tiada had maksimum simpanan gram.
+6. Boleh menjual semula emas melalui Public Gold.
+7. Boleh membuat penebusan dalam bentuk gold bar atau dinar, tertakluk kepada denominasi, premium dan syarat penebusan.
+
+Simpanan emas ini juga mempunyai pengesahan patuh syariah.
+
+Konsepnya mudah. Kita kumpul gram emas sedikit demi sedikit mengikut kemampuan, tanpa perlu tunggu ada modal yang besar.`
   },
   {
-    id: 5,
-    title: "MESEJ 5: REGISTRATION SUCCESS",
-    content: `Alhamdulillah, akaun [NAME] dah berjaya \ndidaftarkan! 🎉\n\nSekarang kita proceed ke langkah \nseterusnya untuk aktifkan akaun.`
+    id: "wa-5",
+    title: "FASA 4A: SEMAK KEFAHAMAN",
+    content: `Setakat ini, jelas tak bagaimana konsep simpanan GAP berfungsi, [NAME]?
+
+Ada mana-mana bahagian yang [NAME] nak saya terangkan dengan lebih lanjut?
+
+Saya lebih suka [NAME] faham dahulu bagaimana simpanan ini berfungsi sebelum membuat keputusan.`
   },
   {
-    id: 6,
-    title: "MESEJ 6: APP DOWNLOAD",
-    content: `Untuk buat transaksi dengan lebih \nmudah, download apps Public Gold dulu:\n\nAndroid 📱\nhttps://play.google.com/store/apps/details?id=com.pgmapp.publicgold\n\niOS 🍎\nhttps://apps.apple.com/my/app/public-gold/id1591580964`
+    id: "wa-6",
+    title: "FASA 4B: JIKA DAH JELAS & NAK DAFTAR",
+    content: `Alhamdulillah.
+
+Kalau [NAME] dah bersedia, saya boleh bantu tunjukkan cara membuka akaun Public Gold.
+
+Pendaftaran akaun adalah percuma dan prosesnya agak mudah.
+
+Saya akan guide [NAME] satu persatu sampai berjaya membuat pembelian pertama.`
   },
   {
-    id: 7,
-    title: "MESEJ 7: LOGIN GUIDE",
-    content: `Untuk login kali pertama:\n- Username: No. IC (12 digit, tanpa dash)\n- Password: No. IC (12 digit, tanpa dash)\n\nSistem akan hantar TAC dari PG untuk \nPengesahan.`
+    id: "wa-7",
+    title: "FASA 5: PROSES PENDAFTARAN",
+    content: `Baik [NAME], kita teruskan dengan pendaftaran akaun.
+
+Untuk pendaftaran, [NAME] perlukan beberapa maklumat asas seperti:
+
+- Nama penuh mengikut IC
+- Nombor kad pengenalan
+- Email
+- Nombor telefon
+
+Saya akan tunjukkan cara mengisi maklumat tersebut melalui saluran pendaftaran Public Gold.
+
+Pastikan semua maklumat yang dimasukkan adalah tepat supaya proses pengesahan akaun berjalan lancar.`
   },
   {
-    id: 8,
-    title: "MESEJ 8: FIRST PURCHASE",
-    content: `Lepas login, aktifkan akaun dengan \npembelian minimum RM100:\n\nKlik Top-Up > Pilih FPX > Bayar\n\nLepas berjaya beli, [NAME] akan dapat \nPG CODE melalui email — tu username \nbaru yang kekal.\n\nUntuk panduan visual:\nhttps://publicgoldofficial.com/taufikmusa/gap-fpx`
+    id: "wa-8",
+    title: "FASA 6: AKAUN BERJAYA DIDAFTAR",
+    content: `Alhamdulillah! Akaun Public Gold [NAME] dah berjaya didaftarkan.
+
+Tahniah kerana dah mengambil langkah pertama untuk mula membina simpanan emas.
+
+Sekarang kita teruskan dengan proses pengaktifan akaun melalui pembelian pertama.`
   },
   {
-    id: 9,
-    title: "MESEJ 9: CONFIRMATION & SUPPORT",
-    content: `Bila dah berjaya buat pembelian pertama, \nbagitahu saya — saya akan invite [NAME] \njoin support group dan guide cara \ntingkatkan tabungan emas dengan cepat.`
+    id: "wa-9",
+    title: "FASA 7: DOWNLOAD APLIKASI",
+    content: `Untuk memudahkan [NAME] menguruskan simpanan emas, boleh download aplikasi rasmi Public Gold terlebih dahulu.
+
+Android:
+https://play.google.com/store/apps/details?id=com.pgmapp.publicgold
+
+iPhone:
+https://apps.apple.com/my/app/public-gold/id1591580964
+
+Selepas selesai install, kita boleh teruskan dengan login kali pertama.`
   },
   {
-    id: 10,
-    title: "MESEJ 10: REWARD & CLOSING",
-    content: `🎉 Tahniah [NAME]! Selamat mengumpul \nemas bersama lebih 1.1 juta penyimpan \ndalam G100 Network.\n\nSebagai tanda penghargaan, saya \nhadiahkan beberapa sumber percuma:\n\n📖 Ebook Emas & Public Gold\n🔗 https://publicgoldofficial.com/taufikmusa/ebook\n\n💬 WhatsApp Group VIP\n🔗 https://chat.whatsapp.com/JN5GFxR2d3I05akgmRHFxs\n\n🎥 Tutorial Public Gold\n🔗 https://publicgoldofficial.com/taufikmusa/tutorial\n\n✅ Checklist Penyimpan Emas Berilmu\n🔗 https://publicgoldofficial.com/taufikmusa/checklist\n\n📚 Buku Wang Emas & Misi Bebas Hutang\n🔗 https://pgmall.my/p/N108/0071?referralPgCode=taufikbinmusa14@gmail.com\n\nSemoga simpanan emas [NAME] terus \nbertambah. Saya sentiasa ada kalau \nada pertanyaan! 🚀`
+    id: "wa-10",
+    title: "FASA 8: LOGIN KALI PERTAMA",
+    content: `Untuk login kali pertama:
+
+Username: Nombor IC 12 digit tanpa dash.
+
+Password: Nombor IC 12 digit tanpa dash, jika ditetapkan begitu oleh sistem pendaftaran.
+
+Selepas itu, ikut arahan pengesahan yang diberikan oleh sistem Public Gold melalui TAC.
+
+Penting: Jangan kongsikan password atau nombor TAC dengan sesiapa, termasuk saya.`
   },
   {
-    id: 11,
-    title: "MESEJ 11: PRIVATE WEBINAR (GROUP)",
-    content: `Guru emas saya akan sampaikan Private Webinar "Membina Satu Juta Pertama".\n\nGuru emas yang saya maksudkan ialah Tuan Mohd Zulkifli Shafie. Boleh stalk FB beliau di www.fb.com/mohdzulkifli.shafie. Beliau antara guru kewangan yang disegani di Malaysia.\n\n✅ Penulis buku best seller iaitu buku Misi Bebas Hutang dan Wang Emas.\n✅ Membimbing lebih 9,000 orang penyimpan emas dan mempunyai lebih 800,000 anak didik dari Malaysia, Indonesia, Singapura dan Brunei.\n\nAntara topik yang akan dikongsikan dalam Private Webinar:\n\n⏺ Simpanan sebagai asas membina kekayaan.\n⏺ Bagaimana emas membentuk disiplin menabung, dan mengekalkan tabungan.\n⏺ Cara mengira jumlah tabungan yang cukup untuk capai "financial freedom".\n⏺ Cara pantas mengembangkan kekayaan dan kesilapan yang sering dilakukan untuk mengembangkan kekayaan.\n\nBagi Tuan & Puan yang serius ingin jadikan simpanan emas sebagai back up kewangan, wajib hadir Private Webinar ini.\n\nYuran pendaftaran adalah RM50. Cuma untuk team kita, Alhamdulillah Tuan Zulkifli offer *5 tiket percuma* kerana saya adalah salah seorang anak didik beliau.\n\nBagi sesiapa yang nak tambah ilmu dan belajar direct dengan beliau, boleh daftar di link di bawah.\n\nLINK PENDAFTARAN\nhttps://pg2u.my/app/pw/taufikmusa`
+    id: "wa-11",
+    title: "FASA 9: PEMBELIAN PERTAMA",
+    content: `Seterusnya, kita aktifkan akaun dengan membuat pembelian pertama melalui GAP.
+
+Langkah-langkahnya:
+
+1. Login ke aplikasi Public Gold.
+2. Pilih menu Top-Up.
+3. Pilih pembayaran FPX.
+4. Masukkan jumlah pembelian, minimum RM100.
+5. Teruskan pembayaran melalui online banking.
+
+Selepas transaksi berjaya, semak email daripada Public Gold untuk mendapatkan PG Code.
+
+PG Code ini akan menjadi username baharu untuk login seterusnya.
+
+Saya sertakan panduan bergambar supaya lebih mudah:
+
+https://publicgoldofficial.com/taufikmusa/gap-fpx
+
+Kalau ada sebarang masalah semasa proses ini, beritahu saya. Saya bantu guide.`
   },
   {
-    id: 12,
-    title: "MESEJ 12: PRIVATE WEBINAR (PERSONAL)",
-    content: `Salam [NAME],\n\nKalau nak belajar tingkatkan jumlah TABUNGAN, selesaikan masalah HUTANG dan bina HARTA sampai RM 1 Juta Pertama, jemput join ke Private Webinar Membina Satu Juta Pertama.\n\nSesi ini bernilai tapi setiap penyimpan emas saya dapat FREE access sekali saja.\nTerhad kepada 1000 peserta pertama sahaja.\n\nDaftar sekarang untuk claim tiket anda:\n\nLINK PENDAFTARAN\nhttps://pg2u.my/app/pw/taufikmusa`
+    id: "wa-12",
+    title: "FASA 10: SELEPAS PEMBELIAN PERTAMA",
+    content: `Alhamdulillah! Macam mana, dah berjaya buat pembelian pertama?
+
+Tahniah [NAME]!
+
+Sekarang [NAME] dah mula memiliki simpanan emas sendiri.
+
+Saya akan bantu invite [NAME] ke dalam support group supaya boleh belajar lebih banyak tentang ilmu simpanan emas, pengurusan kewangan dan cara membina tabungan secara konsisten.
+
+Ingat, matlamat kita bukan sekadar membeli emas. Matlamat kita ialah membina tabungan yang lebih kukuh untuk masa depan.`
+  },
+  {
+    id: "wa-13",
+    title: "FASA 11: HADIAH & BAHAN PEMBELAJARAN",
+    content: `Sebagai tanda penghargaan kerana memilih untuk memulakan perjalanan simpanan emas bersama saya, saya nak kongsikan beberapa bahan pembelajaran percuma untuk [NAME].
+
+Antaranya:
+
+📖 Ebook Emas & Public Gold
+https://publicgoldofficial.com/taufikmusa/ebook
+
+💬 WhatsApp Group VIP
+https://chat.whatsapp.com/JN5GFxR2d3I05akgmRHFxs
+
+🎥 Tutorial Public Gold
+https://publicgoldofficial.com/taufikmusa/tutorial
+
+✅ Checklist Penyimpan Emas Berilmu
+https://publicgoldofficial.com/taufikmusa/checklist
+
+📚 Buku Wang Emas & Misi Bebas Hutang
+https://pgmall.my/p/N108/0071?referralPgCode=taufikbinmusa14@gmail.com
+
+Saya galakkan [NAME] manfaatkan bahan-bahan ini untuk tambah ilmu.
+
+Semoga perjalanan simpanan emas [NAME] dipermudahkan dan terus konsisten.
+
+Selamat menyimpan emas!`
+  },
+  {
+    id: "wa-14",
+    title: "FASA 12: JEMPUTAN WEBINAR (OPSYENAL)",
+    note: "Sahkan yuran, tiket percuma dan kuota setiap sesi webinar sebelum guna.",
+    content: `Satu lagi perkongsian yang saya nak jemput [NAME] sertai.
+
+Guru emas saya, Tuan Mohd Zulkifli Shafie, turut berkongsi ilmu melalui Private Webinar bertajuk:
+
+MEMBINA SATU JUTA PERTAMA
+
+Beliau merupakan penulis buku Misi Bebas Hutang dan Wang Emas, serta aktif membimbing masyarakat dalam ilmu kewangan dan simpanan emas.
+
+Antara topik yang akan dikongsikan:
+
+1. Simpanan sebagai asas membina kekayaan.
+2. Bagaimana emas membantu membentuk disiplin menabung.
+3. Cara mengira jumlah tabungan untuk mencapai kebebasan kewangan.
+4. Strategi mengembangkan kekayaan dan kesilapan yang perlu dielakkan.
+
+Saya sendiri banyak belajar daripada perkongsian beliau.
+
+Kalau [NAME] berminat untuk mendalami ilmu kewangan dan membina kekayaan, boleh lihat maklumat webinar di sini:
+
+https://pg2u.my/app/pw/taufikmusa
+
+Semak maklumat sesi, yuran dan kelayakan tiket percuma yang ditawarkan sebelum membuat pendaftaran.`
   }
 ];
+
+const DM_TEMPLATES = [
+  {
+    id: "dm-0",
+    title: "DM PERTAMA (DRAF)",
+    note: "Draf sementara. Ganti dengan ayat DM pertama asal kau.",
+    content: `Salam [NAME], terima kasih follow saya.
+
+Saya Taufik, Dealer Public Gold. Kalau [NAME] berminat, saya boleh kongsikan ilmu asas tentang simpanan emas, tanpa sebarang komitmen.
+
+Boleh saya kongsikan?`
+  },
+  {
+    id: "dm-1",
+    title: "STEP 1: SAMBUT JAWAPAN \"YA\"",
+    content: `Alhamdulillah, terima kasih Cik.
+
+Sebelum saya terangkan, boleh saya tahu satu perkara?
+
+Cik pernah menyimpan emas sebelum ini atau masih belum pernah mencuba?
+
+Saya tanya supaya saya boleh terangkan ikut tahap pengetahuan Cik. Tak naklah saya cerita benda yang Cik dah tahu.`
+  },
+  {
+    id: "dm-2",
+    title: "STEP 2A: BELUM PERNAH SIMPAN EMAS",
+    content: `Oh, tak apa Cik. Sebenarnya ramai yang baru nak mula pun bermula dari kosong.
+
+Perkara pertama yang Cik perlu tahu, simpanan emas bukan bertujuan untuk cepat kaya. Ia lebih kepada usaha membina aset dan mengekalkan nilai simpanan untuk jangka panjang.
+
+Di Public Gold, kita ada satu kemudahan dipanggil Gold Accumulation Program (GAP), yang membolehkan kita mula menyimpan emas serendah RM100.`
+  },
+  {
+    id: "dm-3",
+    title: "STEP 2B: PERNAH SIMPAN EMAS",
+    content: `Oh, bagus Cik. Maknanya Cik dah ada sedikit pengalaman dengan emas.
+
+Boleh saya tahu, sebelum ini Cik simpan emas dalam bentuk barang kemas, gold bar atau akaun simpanan emas?
+
+Sebab setiap jenis simpanan emas ada kelebihan dan perkara yang kita perlu faham.`
+  },
+  {
+    id: "dm-4",
+    title: "STEP 3: PERKENALKAN GAP",
+    content: `Sebenarnya, melalui GAP Public Gold, kita tak perlu keluarkan modal besar untuk mula menyimpan emas.
+
+Kita boleh tambah simpanan mengikut kemampuan, bermula RM100.
+
+Setiap pembelian akan ditukarkan kepada gram emas dan direkodkan dalam akaun GAP kita.
+
+Apabila gram dah terkumpul, kita boleh terus simpan, jual semula kepada Public Gold atau keluarkan dalam bentuk emas fizikal tertakluk kepada syarat penebusan.
+
+Jadi, kita boleh bina simpanan emas sedikit demi sedikit tanpa perlu tunggu ada duit yang banyak.`
+  },
+  {
+    id: "dm-5",
+    title: "STEP 4: BUKA RUANG UNTUK TINDAKAN",
+    content: `Setakat ni, jelas tak bagaimana konsep simpanan GAP ni berfungsi?
+
+Kalau Cik rasa kaedah ini sesuai dengan matlamat simpanan Cik, saya boleh bantu tunjukkan cara untuk buka akaun dan bagaimana nak mula menyimpan.`
+  },
+  {
+    id: "dm-6",
+    title: "BRIDGE: TIKTOK / DM KE WHATSAPP",
+    note: "Selepas ni sambung guna Fasa 5 dan seterusnya dalam Mod 1.",
+    content: `Baik, terima kasih kerana sudi belajar bersama saya.
+
+Sebelum kita teruskan pendaftaran, saya nak pastikan [NAME] dah jelas tentang konsep simpanan emas GAP dan bagaimana ia berfungsi.
+
+Kalau semuanya dah jelas dan [NAME] memang bersedia untuk mula, saya boleh bantu tunjukkan proses pembukaan akaun.
+
+Kita buat satu persatu, tak perlu tergesa-gesa.`
+  }
+];
+
+const MODES = {
+  wa: {
+    label: "1. Prospect WhatsApp Saya",
+    short: "Prospek WhatsApp saya sendiri",
+    tip: "Hantar satu mesej, tunggu jawapan, kemudian sambung. Jangan hantar semua fasa sekali gus.",
+    templates: WA_TEMPLATES,
+  },
+  dm: {
+    label: "2. Saya Terjah & DM Prospek",
+    short: "Saya terjah dan DM prospek",
+    tip: "Bina perbualan dulu, jangan cuba close orang yang belum nampak value. Satu mesej satu masa.",
+    templates: DM_TEMPLATES,
+  },
+};
 
 export default function App() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [currentMessage, setCurrentMessage] = useState(TEMPLATES[0].content);
+  const [mode, setMode] = useState("wa");
+  const [currentMessage, setCurrentMessage] = useState(WA_TEMPLATES[0].content);
   
   const [copiedId, setCopiedId] = useState(null);
   const [appliedId, setAppliedId] = useState(null);
@@ -208,6 +458,23 @@ export default function App() {
             </p>
           </div>
 
+          {/* Mode switcher */}
+          <div className="space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {Object.entries(MODES).map(([k, m]) => (
+                <button
+                  key={k}
+                  onClick={() => { setMode(k); setCurrentMessage(m.templates[0].content); }}
+                  className={`p-4 text-left font-black uppercase text-sm ${RETRO_BORDER} transition-all ${mode === k ? `bg-[#FFD700] ${RETRO_SHADOW}` : 'bg-white shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5'}`}
+                >
+                  {m.label}
+                  <span className="block mt-1 font-mono font-bold text-[11px] normal-case text-black/60">{m.short}</span>
+                </button>
+              ))}
+            </div>
+            <p className={`bg-[#FFFBE5] ${RETRO_BORDER} px-3 py-2 font-mono text-xs font-bold`}>💡 {MODES[mode].tip}</p>
+          </div>
+
           <div className={`bg-white p-6 ${RETRO_BORDER} ${RETRO_SHADOW} space-y-6`}>
             {/* Inputs */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -280,13 +547,13 @@ export default function App() {
           <div className="space-y-6 pt-6">
             <div className="flex items-center gap-4">
               <h2 className="text-2xl font-black uppercase bg-black text-white px-4 py-1 border-2 border-black shadow-[4px_4px_0px_rgba(255,215,0,1)]">
-                Template Library
+                Template Library · {mode === "wa" ? "Mod 1" : "Mod 2"}
               </h2>
               <div className="h-1 bg-black flex-1"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {TEMPLATES.map((tpl) => (
+              {MODES[mode].templates.map((tpl) => (
                 <div key={tpl.id} className={`bg-white flex flex-col ${RETRO_BORDER} shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] transition-transform duration-200`}>
                   <div className="bg-[#FFD700] border-b-2 border-black p-3 font-bold flex justify-between items-center">
                     <span className="truncate pr-2">{tpl.title}</span>
@@ -295,6 +562,7 @@ export default function App() {
                     <p className="font-mono text-xs text-gray-700 whitespace-pre-wrap line-clamp-4">
                       {processText(tpl.content)}
                     </p>
+                    {tpl.note && <p className="mt-2 font-mono text-[10px] font-bold text-red-600 uppercase">⚠ {tpl.note}</p>}
                   </div>
                   <div className="grid grid-cols-2 border-t-2 border-black bg-gray-50">
                     <button 
