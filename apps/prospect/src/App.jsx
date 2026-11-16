@@ -17,13 +17,13 @@ const GROUPS = {
     short: "Prospek yang aku terjah / DM",
     tip: "Bina perbualan dulu, jangan close orang yang belum nampak value. Hantar satu mesej, tunggu jawapan, kemudian sambung.",
     templates: [
-      { id: "terjah-1", title: "SAMBUT FOLLOWER", content: `Salam {panggilan}. Terima kasih sebab follow akaun saya.
+      { id: "terjah-1", title: "SAMBUT FOLLOWER", content: `Salam {panggilan}.
 
-Saya nak kongsikan sedikit ilmu tentang bagaimana kita boleh bina simpanan jangka panjang menggunakan emas.
+Saya nak kongsikan sedikit ilmu tentang bagaimana kita boleh membina simpanan jangka panjang menggunakan emas.
 
-Mungkin ada beberapa perkara tentang simpanan emas yang {panggilan} belum tahu.
+Kalau {panggilan} berminat, saya boleh luangkan masa untuk berikan penerangan percuma tentang cara menyimpan emas di Public Gold.
 
-Kalau {panggilan} terbuka untuk tambah ilmu, saya boleh luangkan masa 5 minit untuk terangkan secara ringkas bagaimana nak mulakan simpanan emas di Public Gold.` },
+{panggilan} berminat kalau saya kongsikan penerangan ringkas?` },
       { id: "terjah-2", title: "SOAL: PERNAH SIMPAN EMAS?", content: `Alhamdulillah, terima kasih {panggilan}.
 
 Sebelum saya terangkan, boleh saya tahu satu perkara?
