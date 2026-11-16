@@ -67,9 +67,7 @@ Saya akan guide {panggilan} satu persatu sampai berjaya membuat pembelian pertam
     short: "Prospek yang masuk WhatsApp sendiri",
     tip: "Kenali prospek dulu. Hantar satu mesej satu masa, jangan hantar semua sekali gus.",
     templates: [
-      { id: "lead-1", title: "SAMBUT & KENALI", content: `Assalamualaikum dan salam kenal!
-
-Terima kasih kerana menghubungi saya.
+      { id: "lead-1", title: "SAMBUT & KENALI", content: `Salam Cik,
 
 Saya Taufik, Dealer Rasmi Public Gold.
 
