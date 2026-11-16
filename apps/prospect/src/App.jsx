@@ -237,13 +237,14 @@ Semak maklumat sesi, yuran dan kelayakan tiket percuma yang ditawarkan sebelum m
 const DM_TEMPLATES = [
   {
     id: "dm-0",
-    title: "DM PERTAMA (DRAF)",
-    note: "Draf sementara. Ganti dengan ayat DM pertama asal kau.",
-    content: `Salam [NAME], terima kasih follow saya.
+    title: "DM PERTAMA",
+    content: `Salam Cik. Terima kasih sebab follow akaun saya.
 
-Saya Taufik, Dealer Public Gold. Kalau [NAME] berminat, saya boleh kongsikan ilmu asas tentang simpanan emas, tanpa sebarang komitmen.
+Saya nak kongsikan sedikit ilmu tentang bagaimana kita boleh bina simpanan jangka panjang menggunakan emas.
 
-Boleh saya kongsikan?`
+Mungkin ada beberapa perkara tentang simpanan emas yang Cik belum tahu.
+
+Kalau Cik terbuka untuk tambah ilmu, saya boleh luangkan masa 5 minit untuk terangkan secara ringkas bagaimana nak mulakan simpanan emas di Public Gold.`
   },
   {
     id: "dm-1",
@@ -300,9 +301,9 @@ Kalau Cik rasa kaedah ini sesuai dengan matlamat simpanan Cik, saya boleh bantu 
     note: "Selepas ni sambung guna Fasa 5 dan seterusnya dalam Mod 1.",
     content: `Baik, terima kasih kerana sudi belajar bersama saya.
 
-Sebelum kita teruskan pendaftaran, saya nak pastikan [NAME] dah jelas tentang konsep simpanan emas GAP dan bagaimana ia berfungsi.
+Sebelum kita teruskan pendaftaran, saya nak pastikan Cik dah jelas tentang konsep simpanan emas GAP dan bagaimana ia berfungsi.
 
-Kalau semuanya dah jelas dan [NAME] memang bersedia untuk mula, saya boleh bantu tunjukkan proses pembukaan akaun.
+Kalau semuanya dah jelas dan Cik memang bersedia untuk mula, saya boleh bantu tunjukkan proses pembukaan akaun.
 
 Kita buat satu persatu, tak perlu tergesa-gesa.`
   }
