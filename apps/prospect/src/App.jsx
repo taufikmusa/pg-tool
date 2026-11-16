@@ -160,7 +160,7 @@ PG Code ini akan menjadi username baharu untuk login seterusnya.
 
 Saya sertakan panduan bergambar supaya lebih mudah:
 
-https://publicgoldofficial.com/taufikmusa/gap-fpx
+https://pg2u.my/taufikmusa/gap-fpx
 
 Kalau ada sebarang masalah semasa proses ini, beritahu saya. Saya bantu guide.`
   },
@@ -185,16 +185,16 @@ Ingat, matlamat kita bukan sekadar membeli emas. Matlamat kita ialah membina tab
 Antaranya:
 
 📖 Ebook Emas & Public Gold
-https://publicgoldofficial.com/taufikmusa/ebook
+https://pg2u.my/taufikmusa/ebook
 
 💬 WhatsApp Group VIP
 https://chat.whatsapp.com/JN5GFxR2d3I05akgmRHFxs
 
 🎥 Tutorial Public Gold
-https://publicgoldofficial.com/taufikmusa/tutorial
+https://pg2u.my/taufikmusa/tutorial
 
 ✅ Checklist Penyimpan Emas Berilmu
-https://publicgoldofficial.com/taufikmusa/checklist
+https://pg2u.my/taufikmusa/checklist
 
 📚 Buku Wang Emas & Misi Bebas Hutang
 https://pgmall.my/p/N108/0071?referralPgCode=taufikbinmusa14@gmail.com
